@@ -1,33 +1,9 @@
 var FilterableProductTable = React.createClass({
-    getInitialState: function() {
-        return {
-            name: '',
-            price: '',
-            category:''
-        };
-    },
-
-    componentDidMount: function() {
-        this.serverRequest = $.get(this.props.source, function (result) {
-            var lastGist = result[0];
-            this.setState({
-                name: lastGist.owner.login,
-                price: lastGist.html_url,
-                category : lastGist.owner.id
-            });
-        }.bind(this));
-    },
-    componentWillUnmount: function() {
-        this.serverRequest.abort();
-    },
-
-
-
     render: function() {
         return (
           <div>
             <SearchBar />
-            <ProductTable products={this.state.lastGist} />
+            <ProductTable products={this.props.products} />
         </div>
         );
 }
@@ -105,7 +81,7 @@ var PRODUCTS = [
 ];
  
 React.render(
-  <FilterableProductTable products={PRODUCTS} source="https://api.github.com/users/octocat/gists"  />,
+  <FilterableProductTable products={PRODUCTS}  />,
   document.getElementById('react-container')
 );
 
