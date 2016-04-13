@@ -9,7 +9,7 @@ var UserGist = React.createClass({
 
     componentDidMount: function() {
         this.serverRequest = $.get(this.props.source, function (result) {
-            var lastGist = result[0];
+            var lastGist = result[1];
             this.setState({
                 name: lastGist.name,
                 price: lastGist.price,
