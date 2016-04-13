@@ -13,10 +13,7 @@ var ProductTable = React.createClass({
     render: function() {
         var rows = [];
         var lastCategory = null;
-        this.props.products.forEach(function(product) {
-            //if (product.category !== lastCategory) {
-            //    rows.push(<ProductCategoryRow category={product.category} key={product.category} />);
-            //    }
+        this.props.products.forEach(function(product) {            
             rows.push(<ProductRow product={product} key={product.name} category={product.category} />);
         lastCategory = product.category;
     });
@@ -37,13 +34,6 @@ return (
   </table>
         );
 }
-});
-
-
-var ProductCategoryRow = React.createClass({
-    render: function() {
-        return (<tr><th colSpan="2">{this.props.category}</th></tr>);
-    }
 });
 
 var ProductRow = React.createClass({
