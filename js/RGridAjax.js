@@ -1,12 +1,36 @@
 var FilterableProductTable = React.createClass({
+    getInitialState: function() {
+        return {
+            name: '',
+            price: '',
+            category:''
+        };
+    },
+
+    componentDidMount: function() {
+        this.serverRequest = $.get(this.props.source, function (result) {
+            var lastGist = result[0];
+            this.setState({
+                name: lastGist.owner.login,
+                price: lastGist.html_url,
+                category : lastGist.owner.id
+            });
+        }.bind(this));
+    },
+    componentWillUnmount: function() {
+        this.serverRequest.abort();
+    },
+
+
+
     render: function() {
         return (
           <div>
             <SearchBar />
-            <ProductTable products={this.props.products} />
+            <ProductTable products={this.state.lastGist} />
         </div>
         );
-    }
+}
 });
 
 var ProductTable = React.createClass({
@@ -15,8 +39,8 @@ var ProductTable = React.createClass({
         var lastCategory = null;
         this.props.products.forEach(function(product) {            
             rows.push(<ProductRow product={product} key={product.name} category={product.category} />);
-        lastCategory = product.category;
-    });
+lastCategory = product.category;
+});
 
 var style1 = {
     //color: 'black'    
@@ -50,7 +74,7 @@ var ProductRow = React.createClass({
             <td>{this.props.product.category}</td>
           </tr>
         );
-    }
+}
 });
 
 
@@ -81,7 +105,7 @@ var PRODUCTS = [
 ];
  
 React.render(
-  <FilterableProductTable products={PRODUCTS}  />,
+  <FilterableProductTable products={PRODUCTS} source="https://api.github.com/users/octocat/gists"  />,
   document.getElementById('react-container')
 );
 
