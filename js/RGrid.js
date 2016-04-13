@@ -5,8 +5,8 @@ var FilterableProductTable = React.createClass({
             <SearchBar />
             <ProductTable products={this.props.products} />
         </div>
-    );
-}
+        );
+    }
 });
 
 var ProductTable = React.createClass({
@@ -14,10 +14,10 @@ var ProductTable = React.createClass({
         var rows = [];
         var lastCategory = null;
         this.props.products.forEach(function(product) {
-            if (product.category !== lastCategory) {
-                rows.push(<ProductCategoryRow category={product.category} key={product.category} />);
-        }
-            rows.push(<ProductRow product={product} key={product.name} />);
+            //if (product.category !== lastCategory) {
+            //    rows.push(<ProductCategoryRow category={product.category} key={product.category} />);
+            //    }
+            rows.push(<ProductRow product={product} key={product.name} category={product.category} />);
         lastCategory = product.category;
     });
 
@@ -30,7 +30,8 @@ return (
       <tr>
         <th>Name</th>
         <th>Price</th>
-      </tr>
+        <th>Category</th>  
+    </tr>
     </thead>
     <tbody>{rows}</tbody>
   </table>
@@ -56,6 +57,7 @@ var ProductRow = React.createClass({
           <tr>
             <td>{name}</td>
             <td>{this.props.product.price}</td>
+            <td>{this.props.product.category}</td>
           </tr>
         );
     }
