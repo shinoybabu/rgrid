@@ -8,8 +8,11 @@ var UserGist = React.createClass({
     },
 
     componentDidMount: function() {
+        console.log("componentDidMount - Called");
+        console.log(this.props.source);
         this.serverRequest = $.get(this.props.source, function (result) {
             var lastGist = result[0];
+            console.log("inside serverRequest");
             this.setState({
                 name: lastGist.name,
                 price: lastGist.price,
@@ -32,7 +35,7 @@ var UserGist = React.createClass({
 });
 
 React.render(
-  <UserGist source="http://shinoybabu.github.io/rgrid/model/products.json" />,
+  <UserGist source="./model/products.json" />,
   document.getElementById('react-container')
 );
 
