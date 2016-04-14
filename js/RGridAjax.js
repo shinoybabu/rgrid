@@ -36,7 +36,7 @@ var UserGist = React.createClass({
 });
 
 React.render(
-  <UserGist source="./model/products.json" />,
+  <UserGist source="model/products.json" />,
   document.getElementById('react-container')
 );
 
