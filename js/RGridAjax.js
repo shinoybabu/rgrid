@@ -10,6 +10,7 @@ var UserGist = React.createClass({
     componentDidMount: function() {
         console.log("componentDidMount - Called");
         console.log(this.props.source);
+        console.log("before calling serverRequest");
         this.serverRequest = $.get(this.props.source, function (result) {
             var lastGist = result[0];
             console.log("inside serverRequest");
