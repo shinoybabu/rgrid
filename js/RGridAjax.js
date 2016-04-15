@@ -6,8 +6,23 @@ var FilterableProductTable = React.createClass({
         };
     },
 
+    //componentDidMount: function() {
+    //    console.log("inside componentDidMount"); 
+    //    $('.myfeed').visibility({
+    //        once: false,
+        
+    //        // update size when new content loads
+    //        observeChanges: true,
+        
+    //        // load content on bottom edge visible
+    //        onBottomVisible: function() {
+    //            console.log("infiniateScroll ... called.");    
+    //            alert("infiniateScroll ... called.");    
+    //        }
+    //    });
+    //},
+
     refreshData: function() {
-        // alert("click");
         console.log("inside click");
         this.serverRequest = $.get(this.props.source, function (result) {
             console.log("after serverRequest");
@@ -19,7 +34,7 @@ var FilterableProductTable = React.createClass({
     render: function() {
         console.log("inside FilterableProductTable");
         return (
-          <div>
+          <div className="myfeed">
             <SearchBar />
             <input type="button" value="Refresh" onClick={this.refreshData}></input>
             <ProductTable products={this.state.products} />            
