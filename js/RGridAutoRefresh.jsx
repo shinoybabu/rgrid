@@ -126,7 +126,7 @@ var SearchBar = React.createClass({
 
 
 React.render(
-  <FilterableProductTable  source="https://cdn.rawgit.com/angular-ui/ui-grid.info/gh-pages/data/100.json"  />,
+  <FilterableProductTable  source="http://shinoybabu.github.io/rgrid/model/products.json"  />,
   document.getElementById('react-container')
 );
            
