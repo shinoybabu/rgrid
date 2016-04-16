@@ -29,13 +29,14 @@ var FilterableProductTable = React.createClass({
 
 	componentDidMount: function() {
 	console.log("this.tick " + this.tick);
-	this.setInterval(this.tick, 3000);
+	this.setInterval(this.tick, this.props.interval);
 	},
 
 	tick: function() {
 	console.log("inside tick function");
     this.setState({seconds: this.state.seconds + 1});
 	var currentTime = new Date().getTime();
+	this.setState({currTime:currentTime});
 
 	this.serverRequest = $.get(this.props.source+"?time="+this.props.currTime, function (result) {
             console.log("after serverRequest");
@@ -61,7 +62,7 @@ var FilterableProductTable = React.createClass({
         return (
           <div className="myfeed">
             <SearchBar />
-			 Rereshed the Data {this.state.seconds} times (every 3 minutes).<br/>
+			 Rereshed the Data {this.state.seconds} times (every {this.props.interval/1000} seconds).<br/>
             <ProductTable products={this.state.products} />            
         </div>
         );
@@ -125,7 +126,7 @@ var SearchBar = React.createClass({
 
 
 React.render(
-  <FilterableProductTable  source="http://shinoybabu.github.io/rgrid/model/products.json" currTime={new Date()}   />,
+  <FilterableProductTable  source="http://shinoybabu.github.io/rgrid/model/products.json" currTime={new Date()} interval="5000"  />,
   document.getElementById('react-container')
 );
            
