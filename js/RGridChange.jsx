@@ -37,7 +37,7 @@ var FilterableProductTable = React.createClass({
     this.setState({seconds: this.state.seconds + 1});
 	var currentTime = new Date().getTime();
 	this.setState({currTime:currentTime});
-
+	console.log(currentTime);
 	this.serverRequest = $.get(this.props.source+"?time="+this.props.currTime, function (result) {
             console.log("after serverRequest");
             var lastGist = result;
