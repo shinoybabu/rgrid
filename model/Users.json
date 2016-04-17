@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Binoy",
+    "gender": "Male",
+    "company": "Atos",
+    "photo": "binoy.jpg"
+  },
+  {
+    "name": "Shinoy",
+    "gender": "Male",
+    "company": "ITC",
+    "photo": "shinoy.jpg"
+  },
+  {
+    "name": "Abilash",
+    "gender": "Male",
+    "company": "----",
+    "photo": "Abilash.jpg"
+  },
+  {
+    "name": "Gijo",
+    "gender": "Male",
+    "company": "Mindtree",
+    "photo": "Gijo.jpg"
+  },
+  {
+    "name": "Rahas",
+    "gender": "Male",
+    "company": "Dubai",
+    "photo": "Rahas.jpg"
+  },
+  {
+    "name": "Tharif",
+    "gender": "Male",
+    "company": "Capgemini",
+    "photo": "Tharif.jpg"
+  }
+]
