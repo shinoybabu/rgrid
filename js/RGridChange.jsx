@@ -12,16 +12,12 @@ var SetIntervalMixin = {
   }
 };
 
-var FilterableProductTable = React.createClass({
+var RGrid = React.createClass({
 	mixins: [SetIntervalMixin], // Use the mixin	
-    getInitialState: function() {
-		this.serverRequest = $.get(this.props.source, function (result) {
-            console.log("after serverRequest");
-            var lastGist = result;
-            this.setState({products:lastGist});
-        }.bind(this));
+	getInitialState: function () {
+	    this.reloadData();
         return {
-            products: [{company: '', price: '', gender: '', name: ''}],
+            products: [],
 			seconds: 0
 			,currentTime :0
         };
@@ -33,32 +29,27 @@ var FilterableProductTable = React.createClass({
 	},
 
 	tick: function() {
-	console.log("inside tick function");
-    this.setState({seconds: this.state.seconds + 1});
-	var currentTime = new Date().getTime();
-	this.setState({currTime:currentTime});
-	console.log(currentTime);
-	this.serverRequest = $.get(this.props.source+"?time="+this.props.currTime, function (result) {
-            console.log("after serverRequest");
-            var lastGist = result;
-            this.setState({products:lastGist});
-        }.bind(this));     
-
+	    console.log("inside tick function");
+	    this.setState({ seconds: this.state.seconds + 1 });
+	    this.reloadData();
 	},
 
-    /*
-    <input type="button" onClick={this.refreshData} src="../images/Button-Refresh-icon.png"></input>
-	refreshData: function() {
-        console.log("inside click");
-        this.serverRequest = $.get(this.props.source, function (result) {
-            console.log("after serverRequest");
-            var lastGist = result;
-            this.setState({products:lastGist});
-        }.bind(this));     
-    },*/
+	reloadData:function(){
+	    $.ajax({
+	        url: this.props.source,
+	        dataType: 'json',
+	        cache: false,
+	        success: function (data) {
+	            this.setState({ products: data });
+	        }.bind(this),
+	        error: function (xhr, status, err) {
+	            console.error(this.props.source, status, err.toString());
+	        }.bind(this)
+	    });
+	},
 
     render: function() {
-        console.log("inside FilterableProductTable");
+        console.log("inside RGrid");
         return (
           <div className="myfeed">
             <SearchBar />
@@ -126,7 +117,7 @@ var SearchBar = React.createClass({
 
 
 React.render(
-  <FilterableProductTable  source="http://shinoybabu.github.io/rgrid/model/products.json" currTime={new Date()} interval="5000"  />,
+  <RGrid  source="http://shinoybabu.github.io/rgrid/model/products.json" currTime={new Date()} interval="5000"  />,
   document.getElementById('react-container')
 );
            
