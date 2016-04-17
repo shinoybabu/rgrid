@@ -1,5 +1,11 @@
 [
   {
+    "name": "Rahas",
+    "gender": "Male",
+    "company": "Dubai",
+    "photo": "images/Rahas.jpg"
+  },
+  {
     "name": "Binoy",
     "gender": "Male",
     "company": "Atos",
@@ -22,12 +28,6 @@
     "gender": "Male",
     "company": "Mindtree",
     "photo": "images/Gijo.jpg"
-  },
-  {
-    "name": "Rahas",
-    "gender": "Male",
-    "company": "Dubai",
-    "photo": "images/Rahas.jpg"
   },
   {
     "name": "Tharif",
