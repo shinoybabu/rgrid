@@ -77,6 +77,7 @@ var ProductTable = React.createClass({
                     <th>Name</th>
                     <th>Gender</th>
                     <th>Company</th>  
+                    <th>Photo</th>  
                 </tr>
                 </thead>
                 <tbody>{rows}</tbody>
@@ -93,6 +94,7 @@ var ProductRow = React.createClass({
             <td>{this.props.product.name}</td>
             <td>{this.props.product.gender}</td>
             <td>{this.props.product.company}</td>
+            <td>{this.props.product.photo}</td>
           </tr>
         );
 }
@@ -117,7 +119,7 @@ var SearchBar = React.createClass({
 
 
 React.render(
-  <RGrid  source="http://shinoybabu.github.io/rgrid/model/products.json" currTime={new Date()} interval="5000"  />,
+  <RGrid  source="http://shinoybabu.github.io/rgrid/model/Users.json" currTime={new Date()} interval="5000"  />,
   document.getElementById('react-container')
 );
            
