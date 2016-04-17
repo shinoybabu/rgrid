@@ -94,7 +94,7 @@ var ProductRow = React.createClass({
             <td>{this.props.product.name}</td>
             <td>{this.props.product.gender}</td>
             <td>{this.props.product.company}</td>
-            <td>{this.props.product.photo}</td>
+            <td><image src={this.props.product.photo} alt={this.props.product.name} className='photo'></image></td>
           </tr>
         );
 }

@@ -25,3 +25,7 @@ body {
 .myfeed {
     height: 200px;
 }
+
+.photo {
+   width:25px;height:25px;
+}
