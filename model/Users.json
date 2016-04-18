@@ -1,15 +1,15 @@
 [
   {
-    "name": "Rahas",
-    "gender": "Male",
-    "company": "Dubai",
-    "photo": "images/Rahas.jpg"
-  },
-  {
     "name": "Binoy",
     "gender": "Male",
     "company": "Atos",
     "photo": "images/Binoy.jpg"
+  },
+  {
+    "name": "Rahas",
+    "gender": "Male",
+    "company": "Dubai",
+    "photo": "images/Rahas.jpg"
   },
   {
     "name": "Shinoy",
