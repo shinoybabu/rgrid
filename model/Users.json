@@ -1,38 +1,39 @@
 [
-  {
-    "name": "Binoy",
-    "gender": "Male",
-    "company": "Atos",
-    "photo": "images/Binoy.jpg"
-  },
-  {
+      {
     "name": "Rahas",
     "gender": "Male",
     "company": "Dubai",
     "photo": "images/Rahas.jpg"
   },
-  {
-    "name": "Shinoy",
-    "gender": "Male",
-    "company": "ITC",
-    "photo": "images/shinoy.jpg"
-  },
-  {
-    "name": "Abilash",
-    "gender": "Male",
-    "company": "----",
-    "photo": "images/Abilash.jpg"
-  },
-  {
-    "name": "Gijo",
-    "gender": "Male",
-    "company": "Mindtree",
-    "photo": "images/Gijo.jpg"
-  },
-  {
-    "name": "Tharif",
-    "gender": "Male",
-    "company": "Capgemini",
-    "photo": "images/Tharif.jpg"
-  }
+    {
+        "name": "Binoy",
+        "gender": "Male",
+        "company": "Atos",
+        "photo": "images/Binoy.jpg"
+    },
+
+    {
+        "name": "Shinoy",
+        "gender": "Male",
+        "company": "ITC",
+        "photo": "images/shinoy.jpg"
+    },
+    {
+        "name": "Abilash",
+        "gender": "Male",
+        "company": "----",
+        "photo": "images/Abilash.jpg"
+    },
+    {
+        "name": "Gijo",
+        "gender": "Male",
+        "company": "Mindtree",
+        "photo": "images/Gijo.jpg"
+    },
+    {
+        "name": "Tharif",
+        "gender": "Male",
+        "company": "Capgemini",
+        "photo": "images/Tharif.jpg"
+    }
 ]
