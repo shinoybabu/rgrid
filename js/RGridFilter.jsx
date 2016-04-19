@@ -50,10 +50,13 @@ var RGrid = React.createClass({
 	    });		
 	},
 
-	  handleUserInput: function(filterText, inStockOnly) {
+	  handleUserInput: function(filterText) {
+	  console.log("inside handleUserInput");
+	  console.log(filterText);
 		this.setState({
 		  filterText: filterText
 		});
+		console.log(filterText);
 	  },
 
     render: function() {
