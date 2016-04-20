@@ -1,5 +1,11 @@
 [
-     {
+    {
+        "name": "Shinoy",
+        "gender": "Male",
+        "company": "ITC",
+        "photo": "images/shinoy.jpg"
+    },
+        {
         "name": "Rahas",
         "gender": "Male",
         "company": "Dubai",
@@ -12,13 +18,7 @@
         "photo": "images/Binoy.jpg"
     },
 
-    {
-        "name": "Shinoy",
-        "gender": "Male",
-        "company": "ITC",
-        "photo": "images/shinoy.jpg"
-    },
-    {
+     {
         "name": "Abilash",
         "gender": "Male",
         "company": "----",
