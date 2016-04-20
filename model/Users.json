@@ -35,11 +35,11 @@
         "gender": "Male",
         "company": "Capgemini",
         "photo": "images/Tharif.jpg"
-    }
-        {
-        "name": "Rejeesh",
-        "gender": "Male",
-        "company": "ITC",
-        "photo": "images/Rejeesh.jpg"
+    },
+    {
+    "name": "Rejeesh",
+    "gender": "Male",
+    "company": "ITC",
+    "photo": "images/Rejeesh.jpg"
     }
 ]
