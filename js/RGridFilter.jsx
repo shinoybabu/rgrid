@@ -65,22 +65,35 @@ var ProductTable = React.createClass({
     
 	getInitialState: function() {
         return {
-			NameSearch : ''
+			NameSearch : '',
+			GenderSearch : '',
+			CompanySearch : ''
 		}
     },
 
 	ChangeNameSearch : function(event){
 		this.setState({NameSearch : event.target.value});
-		console.log(event.target.value);
+		},
+	ChangeGenderSearch : function(event){
+		this.setState({GenderSearch : event.target.value});
+		},
+	ChangeCompanySearch : function(event){
+		this.setState({CompanySearch : event.target.value});
 		},
 	
 	render: function() {
-			var _NameSearch = this.state.NameSearch	;
+			var _NameSearch = this.state.NameSearch;
+			var _GenderSearch = this.state.GenderSearch;
+			var _CompanySearch = this.state.CompanySearch;
 			var rows = [];        
 			this.props.Products.forEach(function(product) {       
 			console.log("inside ProductTable method for each"); 
 			console.log(_NameSearch);     
-			if (product.name.toLowerCase().indexOf(_NameSearch.toLowerCase()) === -1 ) {  //this.props.filterText
+			if (
+				(product.name.toLowerCase().indexOf(_NameSearch.toLowerCase()) === -1 )
+				||(product.gender.toLowerCase().indexOf(_GenderSearch.toLowerCase()) === -1 )
+				||(product.company.toLowerCase().indexOf(_CompanySearch.toLowerCase()) === -1 )
+			) {  //this.props.filterText
 				return;
 			  }
 			  rows.push(<ProductRow product={product}/>);
@@ -98,8 +111,8 @@ var ProductTable = React.createClass({
 					</tr>
 					<tr>
 						<th><input type="text" ref="refTxtName" className="gridTextBox" onChange={this.ChangeNameSearch} /></th>
-						<th><input type="text" ref="refTxtGender" className="gridTextBox" /></th>
-						<th><input type="text" ref="refTxtCompany" className="gridTextBox" /></th>
+						<th><input type="text" ref="refTxtGender" className="gridTextBox" onChange={this.ChangeGenderSearch} /></th>
+						<th><input type="text" ref="refTxtCompany" className="gridTextBox" onChange={this.ChangeCompanySearch} /></th>
 						<th></th>  
 					</tr>
                 </thead>

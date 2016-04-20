@@ -1,16 +1,10 @@
 [
-    {
-        "name": "Shinoy",
-        "gender": "Male",
-        "company": "ITC",
-        "photo": "images/shinoy.jpg"
-    },
-        {
-        "name": "Rahas",
-        "gender": "Male",
-        "company": "Dubai",
-        "photo": "images/Rahas.jpg"
-    },
+      {
+    "name": "Rahas",
+    "gender": "Male",
+    "company": "Dubai",
+    "photo": "images/Rahas.jpg"
+  },
     {
         "name": "Binoy",
         "gender": "Male",
@@ -18,7 +12,13 @@
         "photo": "images/Binoy.jpg"
     },
 
-     {
+    {
+        "name": "Shinoy",
+        "gender": "Male",
+        "company": "ITC",
+        "photo": "images/shinoy.jpg"
+    },
+    {
         "name": "Abilash",
         "gender": "Male",
         "company": "----",
@@ -37,9 +37,22 @@
         "photo": "images/Tharif.jpg"
     },
     {
-    "name": "Rejeesh",
-    "gender": "Male",
-    "company": "ITC Infotech",
-    "photo": "images/Rejeesh.jpg"
+        "name": "Rejeesh",
+        "gender": "Male",
+        "company": "ITC ",
+        "photo": "images/Rejeesh.jpg"
+    },
+    {
+        "name": "Asha",
+        "gender": "Female",
+        "company": "ITC ",
+        "photo": "images/Asha.jpg"
+    },
+    {
+    "name": "Reshma",
+    "gender": "Female",
+    "company": "ITC ",
+    "photo": "images/Reshma.jpg"
     }
+
 ]
