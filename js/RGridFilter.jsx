@@ -130,7 +130,7 @@ var ProductRow = React.createClass({
 React.render(
   <RGrid  
 	source="model/Users.json" 
-	interval="50000"  />,
+	interval="1000"  />,
   document.getElementById('react-container')
 );
            
