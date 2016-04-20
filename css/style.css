@@ -13,6 +13,9 @@ body {
     padding: 0;
 }
 
+.rGrid {
+    height:800px;
+}
 
 .rGridStyle  table, th, td  {
     border: 1px solid black; 
@@ -22,10 +25,10 @@ body {
     background-color: black;
 }
 
-.myfeed {
-    height: 200px;
-}
-
 .photo {
    width:25px;height:25px;
+}
+
+.gridTextBox {
+
 }

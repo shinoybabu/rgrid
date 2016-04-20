@@ -20,8 +20,6 @@ var RGrid = React.createClass({
             Products: []
 			,seconds: 0
 			,currentTime :0
-			,filterText: ''
-			,inStockOnly: false
         };
     },
 
@@ -50,23 +48,10 @@ var RGrid = React.createClass({
 	    });		
 	},
 
-	  handleUserInput: function(filterText) {
-	  console.log("inside handleUserInput");
-	  console.log(filterText);
-		this.setState({
-		  filterText: filterText
-		});
-		console.log(filterText);
-	  },
-
     render: function() {
         console.log("inside RGrid");
         return (
-          <div className="myfeed">
-            <SearchBar
-			  filterText={this.state.filterText}
-			  onUserInput={this.handleUserInput}
-			/>
+          <div>
 			 Rereshed the Data {this.state.seconds} times (every {this.props.interval/1000} seconds).<br/>
             <ProductTable Products={this.state.Products} 
 				filterText={this.state.filterText} 
@@ -77,28 +62,46 @@ var RGrid = React.createClass({
 });
 
 var ProductTable = React.createClass({
-    render: function() {
-	var _filterText = this.props.filterText	
-        var rows = [];        
-        this.props.Products.forEach(function(product) {       
-		console.log("inside ProductTable method for each");     
-           // rows.push(<ProductRow product={product}/>);
-			if (product.name.indexOf(_filterText) === -1 ) {  //this.props.filterText
+    
+	getInitialState: function() {
+        return {
+			NameSearch : ''
+		}
+    },
+
+	ChangeNameSearch : function(event){
+		this.setState({NameSearch : event.target.value});
+		console.log(event.target.value);
+		},
+	
+	render: function() {
+			var _NameSearch = this.state.NameSearch	;
+			var rows = [];        
+			this.props.Products.forEach(function(product) {       
+			console.log("inside ProductTable method for each"); 
+			console.log(_NameSearch);     
+			if (product.name.toLowerCase().indexOf(_NameSearch.toLowerCase()) === -1 ) {  //this.props.filterText
 				return;
 			  }
 			  rows.push(<ProductRow product={product}/>);
-        });
+        });		
 
         return (
             <div>
               <table className="pure-table pure-table-bordered">
                 <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Gender</th>
-                    <th>Company</th>  
-                    <th>Photo</th>  
-                </tr>
+					<tr>
+						<th>Name</th>
+						<th>Gender</th>
+						<th>Company</th>  
+						<th>Photo</th>  
+					</tr>
+					<tr>
+						<th><input type="text" ref="refTxtName" className="gridTextBox" onChange={this.ChangeNameSearch} /></th>
+						<th><input type="text" ref="refTxtGender" className="gridTextBox" /></th>
+						<th><input type="text" ref="refTxtCompany" className="gridTextBox" /></th>
+						<th></th>  
+					</tr>
                 </thead>
                 <tbody>{rows}</tbody>
               </table>            
@@ -121,35 +124,13 @@ var ProductRow = React.createClass({
 });
 
 
-var SearchBar = React.createClass({ 
-  
-  handleChange: function() {
-  console.log("inside SearchBar");
-  console.log(this.refs.filterTextInputRef.value);
-    this.props.onUserInput(
-      this.refs.filterTextInputRef.value
-    );
-  },
-
-  render: function() {
-    return (
-      <form>
-        <input
-          type="text"
-          placeholder="Search..."
-          value={this.props.filterText}
-          ref="filterTextInputRef"
-          onChange={this.handleChange}
-        />
-      </form>
-    );
-  }
-});
 
 
 
 React.render(
-  <RGrid  source="http://shinoybabu.github.io/rgrid/model/Users.json" currTime={new Date()} interval="50000"  />,
+  <RGrid  
+	source="http://shinoybabu.github.io/rgrid/model/Users.json" 
+	interval="50000"  />,
   document.getElementById('react-container')
 );
            
