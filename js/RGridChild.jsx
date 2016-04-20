@@ -117,9 +117,9 @@ var ProductTable = React.createClass({
 				headers.push(<th>{column}</th>);
 			});
 			
-			this.props.columns.forEach(function(column) { 
-				headerFilters.push(<th><input type="text" className="gridTextBox" onChange={this.ChangenameSearch} /></th>);
-			});
+			//this.props.columns.forEach(function(column) { 
+			//	headerFilters.push(<th><input type="text" className="gridTextBox" onChange={this.ChangenameSearch} /></th>);
+			//});
 
 			//<th><input type="text" className="gridTextBox" onChange={this.ChangenameSearch} /></th>
 			//			<th><input type="text" className="gridTextBox" onChange={this.ChangegenderSearch} /></th>
@@ -134,7 +134,10 @@ var ProductTable = React.createClass({
 						{headers}  
 					</tr>
 					<tr>
-						 {headerFilters}
+						 <th><input type="text" className="gridTextBox" onChange={this.ChangenameSearch} /></th>
+									<th><input type="text" className="gridTextBox" onChange={this.ChangegenderSearch} /></th>
+									<th><input type="text" className="gridTextBox" onChange={this.ChangecompanySearch} /></th>
+							<th></th> 
 					</tr>
                 </thead>
                 <tbody>{rows}</tbody>
@@ -170,7 +173,7 @@ var ProductRow = React.createClass({
 React.render(
 	<RGrid  
 		source="model/Users.json" 
-		interval="10000" >
+		interval="1000" >
 		<column field="name" />
 		<column field="gender" />
 		<column field="company" />
