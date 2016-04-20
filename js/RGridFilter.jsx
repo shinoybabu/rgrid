@@ -24,12 +24,10 @@ var RGrid = React.createClass({
     },
 
 	componentDidMount: function() {
-	console.log("this.tick " + this.tick);
 	this.setInterval(this.tick, this.props.interval);
 	},
 
 	tick: function() {
-	    console.log("inside tick function");
 	    this.setState({ seconds: this.state.seconds + 1 });
 	    this.reloadData();
 	},
@@ -49,7 +47,6 @@ var RGrid = React.createClass({
 	},
 
     render: function() {
-        console.log("inside RGrid");
         return (
           <div>
 			 Rereshed the Data {this.state.seconds} times (every {this.props.interval/1000} seconds).<br/>
@@ -62,7 +59,6 @@ var RGrid = React.createClass({
 });
 
 var ProductTable = React.createClass({
-    
 	getInitialState: function() {
         return {
 			NameSearch : '',
@@ -87,13 +83,11 @@ var ProductTable = React.createClass({
 			var _CompanySearch = this.state.CompanySearch;
 			var rows = [];        
 			this.props.Products.forEach(function(product) {       
-			console.log("inside ProductTable method for each"); 
-			console.log(_NameSearch);     
 			if (
 				(product.name.toLowerCase().indexOf(_NameSearch.toLowerCase()) === -1 )
 				||(product.gender.toLowerCase().indexOf(_GenderSearch.toLowerCase()) === -1 )
 				||(product.company.toLowerCase().indexOf(_CompanySearch.toLowerCase()) === -1 )
-			) {  //this.props.filterText
+			) { 
 				return;
 			  }
 			  rows.push(<ProductRow product={product}/>);
@@ -135,10 +129,6 @@ var ProductRow = React.createClass({
         );
 }
 });
-
-
-
-
 
 React.render(
   <RGrid  
