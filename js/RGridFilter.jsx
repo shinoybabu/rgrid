@@ -129,7 +129,7 @@ var ProductRow = React.createClass({
 
 React.render(
   <RGrid  
-	source="http://shinoybabu.github.io/rgrid/model/Users.json" 
+	source="model/Users.json" 
 	interval="50000"  />,
   document.getElementById('react-container')
 );
