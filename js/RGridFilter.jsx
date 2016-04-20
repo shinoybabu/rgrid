@@ -73,7 +73,7 @@ var RGrid = React.createClass({
 				/>            
         </div>
         );
-}
+    }
 });
 
 var ProductTable = React.createClass({
