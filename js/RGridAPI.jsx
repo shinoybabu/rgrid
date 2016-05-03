@@ -76,50 +76,75 @@ var RGrid = React.createClass({
 //-----------------ProductTable-------------------------//
 
 var ProductTable = React.createClass({
-	getInitialState: function() {
+	
+	getInitialState: function() {	
         return {
-			NameSearch : '',
-			GenderSearch : '',
-			CompanySearch : ''
+			Search:[]			
 		}
     },
 
-	ChangenameSearch : function(event){
-	console.log("Text changed")
-		this.setState({NameSearch : event.target.value});
-		},
-	ChangegenderSearch : function(event){
-		this.setState({GenderSearch : event.target.value});
-		},
-	ChangecompanySearch : function(event){
-		this.setState({CompanySearch : event.target.value});
-		},
-	
+	componentWillReceiveProps: function() {
+		var _Search =[];
+		if(this.state.Search.length <1)
+		{
+		console.log("Reset the array")
+		   this.props.columns.map(function(column) {
+			  _Search.push('');	
+			});
+			this.setState({Search:_Search});
+		}
+		else{
+		console.log(this.state.Search)
+		}
+	},
+
 	render: function() {
-			var _NameSearch = this.state.NameSearch;
-			var _GenderSearch = this.state.GenderSearch;
-			var _CompanySearch = this.state.CompanySearch;
+		console.log("ProductTable - render")
+			//var _NameSearch = this.state.NameSearch;
+			//var _GenderSearch = this.state.GenderSearch;
+			//var _CompanySearch = this.state.CompanySearch;
+			var _Search =[];			
 			var _Cols =this.props.columns;
 			var rows = [];     
 			var headers =[];
 			var headerFilters =[];
-			   
-			this.props.Products.forEach(function(product) {       
-			if (
-				(product.name.toLowerCase().indexOf(_NameSearch.toLowerCase()) === -1 )
-				||(product.gender.toLowerCase().indexOf(_GenderSearch.toLowerCase()) === -1 )
-				||(product.company.toLowerCase().indexOf(_CompanySearch.toLowerCase()) === -1 )
-			) { 
-				return;
-			  }
+			var i = 0;
+			var j = 0;
+			var _SearchArrLength =this.state.Search.length;
+
+			
+			this.props.Products.forEach(function(product) {  
+			
+			//_SearchTemp.forEach(function(Sr) { 
+			//	headers.push(<th>{column}</th>);
+			//});
+			     
+			//if (
+			//	(product.name.toLowerCase().indexOf(_NameSearch.toLowerCase()) === -1 )
+			//	||(product.gender.toLowerCase().indexOf(_GenderSearch.toLowerCase()) === -1 )
+			//	||(product.company.toLowerCase().indexOf(_CompanySearch.toLowerCase()) === -1 )
+			//) { 
+			//	return;
+			  //}
 				rows.push(<ProductRow product={product} columns ={_Cols}/>);				      
 			});	
-			this.props.columns.forEach(function(column) { 
+
+
+			_Cols.forEach(function(column) { 
 				headers.push(<th>{column}</th>);
 			});
-			
-			this.props.columns.forEach(function(column) { 
-				headerFilters.push(<th><input type="text" className="gridTextBox" onChange={this.ChangenameSearch} value="test" /></th>);
+
+			_Cols.map(function(column) { 
+				headerFilters.push(<th><input type="text" className="gridTextBox" id={i}
+												onChange={function(event)
+															{
+															//console.log("this.state.Search inside event		" +this.state)
+															_Search[event.target.id-1]=event.target.value; 
+															//this.setState({Search:Search}); 
+															//console.log(this.state.Search);
+															}
+														} /></th>
+									);									
 			});
 			
         return (
@@ -130,9 +155,8 @@ var ProductTable = React.createClass({
 						{headers}  
 					</tr>
 					<tr>
-						 {headerFilters} 
+					{headerFilters}
 					</tr>
-					
                 </thead>
                 <tbody>{rows}</tbody>
               </table>            
@@ -151,12 +175,6 @@ var ProductRow = React.createClass({
 		this.props.columns.forEach(function(column) { 
 				fields.push(<td>{_Products[column]}</td>);
 			});
-
-			//<td>{this.props.product["name"]}</td>
-            //<td>{this.props.product["gender"]}</td>
-            //<td>{this.props.product["company"]}</td>
-            //<td><image src={this.props.product["photo"]} alt={this.props.product["name"]} className='photo'></image></td>
-
         return (
           <tr>
             {fields}
@@ -169,12 +187,12 @@ var ProductRow = React.createClass({
 
 React.render(
 	<RGrid  
-		source="model/Users.json" 
-		interval="60000" >
+		source="http://binoy3-babu.rhcloud.com/rest/users" 
+		interval="10000" >
 		<column field="name" displayName="User Name"/>
-		<column field="gender" />
-		<column field="company" />
-		<column field="photo" />
+		<column field="age" />
+		<column field="lastName" />
+		<column field="job" />
 	</RGrid>,
   document.getElementById('react-container')
 );
