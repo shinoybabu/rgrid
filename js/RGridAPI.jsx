@@ -53,7 +53,7 @@ var RGrid = React.createClass({
 	            this.setState({ Products: data });
 	        }.bind(this),
 	        error: function (xhr, status, err) {
-	            console.error(this.props.source, status, err.toString());
+	            //console.error(this.props.source, status, err.toString());
 	        }.bind(this)
 	    });		
 	},
@@ -84,22 +84,26 @@ var ProductTable = React.createClass({
     },
 
 	componentWillReceiveProps: function() {
+	//console.log("componentWillReceiveProps ")
 		var _Search =[];
 		if(this.state.Search.length <1)
 		{
-		console.log("Reset the array")
+		//console.log("Reset the array")
 		   this.props.columns.map(function(column) {
 			  _Search.push('');	
 			});
 			this.setState({Search:_Search});
 		}
 		else{
-		console.log(this.state.Search)
+		//console.log(this.state.Search)
 		}
 	},
 
+	componentDidMount: function() {
+	},
+
 	render: function() {
-		console.log("ProductTable - render")
+		//console.log("ProductTable - render")
 			//var _NameSearch = this.state.NameSearch;
 			//var _GenderSearch = this.state.GenderSearch;
 			//var _CompanySearch = this.state.CompanySearch;
@@ -135,13 +139,11 @@ var ProductTable = React.createClass({
 			});
 
 			_Cols.map(function(column) { 
+			//console.log("bind events")
 				headerFilters.push(<th><input type="text" className="gridTextBox" id={i}
 												onChange={function(event)
 															{
-															//console.log("this.state.Search inside event		" +this.state)
 															_Search[event.target.id-1]=event.target.value; 
-															//this.setState({Search:Search}); 
-															//console.log(this.state.Search);
 															}
 														} /></th>
 									);									
@@ -154,9 +156,9 @@ var ProductTable = React.createClass({
 					<tr>
 						{headers}  
 					</tr>
-					<tr>
+					{/*<tr>
 					{headerFilters}
-					</tr>
+					</tr>*/}
                 </thead>
                 <tbody>{rows}</tbody>
               </table>            
@@ -189,6 +191,7 @@ React.render(
 	<RGrid  
 		source="http://binoy3-babu.rhcloud.com/rest/users" 
 		interval="10000" >
+		<column field="id" />
 		<column field="name" displayName="User Name"/>
 		<column field="age" />
 		<column field="lastName" />

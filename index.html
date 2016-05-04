@@ -33,54 +33,41 @@
     <form class="pure-form">
         <!--<div>
             <br />
-            <table classname="pure-table pure-table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>LastName</th>
-                        <th>Job</th>
-                    </tr>
-                </thead>
-                <tr>
-                    <td><input type="text" id="txtID" /></td>
-                    <td><input type="text" id="txtName" /></td>
-                    <td><input type="text" id="txtAge" /></td>
-                    <td><input type="text" id="txtLastName" /></td>
-                    <td><input type="text" id="txtJob" /></td>
-                    <td><input type="button" id="btnSave" value="Save" /></td>
-                </tr>
-            </table>
-        </div>-->
-        <br />
+            ID :<input type="text" id="txtID" />
+            Name: <input type="text" id="txtName" /><br />
+            Age: <input type="text" id="txtAge" />
+            LastName :<input type="text" id="txtLastName" />
+            Job : <input type="text" id="txtJob" /><br />
+            <input type="button" id="btnSave" value="Save" />
+        </div>-->        
         <div id="react-container" class="rGrid"></div>
         <script src="js/RGridAPI.jsx" type="text/jsx">
         </script>
         <script type="text/javascript">
-            $("#btnSave").click(
-                function () {
-                    alert("ajax call");
+            
+            //$("#btnSave").click(
+            //    function () {
+            //        alert("ajax call");
 
-                    var settings = {
-                        "async": true,
-                        "crossDomain": true,
-                        "url": "http://binoy3-babu.rhcloud.com/rest/users/",
-                        "method": "POST",
-                        "headers": {
-                            "content-type": "application/json",
-                            "cache-control": "no-cache",
-                            "postman-token": "89d680dd-9350-e423-3be4-9694051749d9"
-                        },
-                        "processData": false,
-                        "data": "{\"id\":13,\"name\":\"Amritha\",\"age\":29,\"lastName\":\"Shinoy\",\"job\":\"s/w eng\"}"
-                    }
+            //        var settings = {
+            //            "async": true,
+            //            "crossDomain": true,
+            //            "url": "http://binoy3-babu.rhcloud.com/rest/users/",
+            //            "method": "POST",
+            //            "headers": {
+            //                "content-type": "application/json",
+            //                "cache-control": "no-cache",
+            //                "postman-token": "89d680dd-9350-e423-3be4-9694051749d9"
+            //            },
+            //            "processData": false,
+            //            "data": "{\"id\":13,\"name\":\"Amritha\",\"age\":29,\"lastName\":\"Shinoy\",\"job\":\"s/w eng\"}"
+            //        }
 
-                    $.ajax(settings).done(function (response) {
-                        console.log(response);
-                    });
-                }
-            );
+            //        $.ajax(settings).done(function (response) {
+            //            console.log(response);
+            //        });
+            //    }
+            //);
         </script>
     </form>
 </body>
