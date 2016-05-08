@@ -1,6 +1,7 @@
 var Note = React.createClass({
-
-	render: function() {
+    
+    render: function() {
+        console.log("Inside Note");
         	return <div>Hello {this.props.text}, you are working at {this.props.children}</div>;
     	}
 

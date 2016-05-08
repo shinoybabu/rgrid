@@ -14,6 +14,7 @@ var Note = React.createClass({
     },
 
     render: function() {
+        console.log("inside Render");
         if (this.state.editing) {
             return (		
 		<input type="button" value="click me1" onClick={this.clicked1}></input>

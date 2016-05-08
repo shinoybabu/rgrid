@@ -1,10 +1,12 @@
 var Note = React.createClass({
     
     getInitialState: function() {
-        return {editing: true}
+        console.log("inside getInitialState");
+        return {editing: false}
     },
     
     render: function() {
+        console.log("render");
         if (this.state.editing) {
             return alert("true");
         }
